@@ -34,15 +34,53 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+Step 1: Open Quartus II in your laptop.
+
+Step 2: Write code to implement SR flipflop using Verilog and validating their functionality using their functional tables.
+
+Step 3: Run compilation to check for errors.
+
+Step 4: Open waveform output and load input values.
+
+Step 5: Run simulation to get the output.
+
+Step 6: Open in RTL viewers to get RTL diagram output.
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
+/* Program for flipflops and verify its truth table in quartus using Verilog programming.
+Developed by:A.VIMAL
+RegisterNumber:24005922
 */
-
+```
+module srflipflop(q, q_bar, s,r, clk, reset);
+  input s,r,clk, reset;
+  output reg q;
+  output q_bar;
+ 
+  always@(posedge clk) begin 
+    if(!reset)       
+			q <= 0;
+    else 
+  begin
+      case({s,r})       
+	     2'b00: q <= q;    
+        2'b01:q<=1'b0;   
+        2'b10:q<=1'b1;   
+        2'b11:q<=1'bx;  
+      endcase
+    end
+  end
+  assign q_bar = ~q;
+endmodule
+```
 **RTL LOGIC FOR FLIPFLOPS**
+![Screenshot 2024-12-26 202228](https://github.com/user-attachments/assets/22cb231b-ccb0-499e-87f2-c6408cdbff29)
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![Screenshot (13)](https://github.com/user-attachments/assets/1eecba2c-5c2d-477d-b5ec-9d1e91416862)
+
 
 **RESULTS**
+The observation of the simulation results and confirm the successful execution of the program.
